@@ -1,4 +1,4 @@
-What is each pokemon's primary type?
+#What is each pokemon's primary type?
 SELECT pokemons.name, types.name AS type FROM pokemons
 JOIN types ON pokemons.primary_type = types.id;
 
@@ -19,10 +19,11 @@ FROM pokemons JOIN types ON pokemons.secondary_type = types.id WHERE types.name 
 SELECT count(pokemons.name) AS number_of_pokemon, types.name AS type
 FROM pokemons JOIN types ON pokemons.primary_type = types.id GROUP BY types.name;
 
-#How many pokemon at level 100 does each trainer with at least one level 100 pokemone have? (Hint: your query should not display a trainer?
+#How many pokemon at level 100 does each trainer with at least one level 100 pokemon have? (Hint: your query should not display a trainer?
 SELECT count(pokemons.name) AS number_of_pokemon, pokemon_trainer.trainerID
 FROM pokemons JOIN pokemon_trainer ON pokemons.id = pokemon_trainer.pokemon_id
 WHERE pokemon_trainer.pokelevel = 100 GROUP BY pokemon_trainer.trainerID;
 
 #How many pokemon only belong to one trainer and no other?
-
+SELECT pokemon_trainer.pokemon_id, COUNT(pokemon_trainer.trainerID)
+FROM pokemon_trainer GROUP BY pokemon_trainer.pokemon_id HAVING COUNT(pokemon_trainer.trainerID) = 1;
