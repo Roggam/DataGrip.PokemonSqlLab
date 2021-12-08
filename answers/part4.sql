@@ -10,4 +10,4 @@ JOIN types AS type1 ON pokemons.primary_type = type1.id
 JOIN types AS type2 ON pokemons.secondary_type = type2.id
 ORDER BY (pokelevel + maxhp + attack + defense) DESC;
 
-#sorted by sum of pokelevel, maxhp, attack and defense because these key attributes to win any battle
+#sorted by sum of pokelevel, maxhp, attack and defense because these key attributes to win any battle!
